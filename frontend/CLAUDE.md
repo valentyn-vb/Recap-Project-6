@@ -7,7 +7,10 @@
 - **Architecture style**: Composition API with `<script setup lang="ts">`. Currently
   the unmodified `npm create vite -- --template vue-ts` scaffold (`HelloWorld.vue`
   counter/hero boilerplate) — no router, no state management, no UI library, no HTTP
-  client, no ESLint/Prettier, no test runner, and no dev-server proxy to the backend.
+  client, no ESLint/Prettier, and no dev-server proxy to the backend.
+- **Testing**: Vitest + `@vue/test-utils`, `jsdom` environment, configured via the
+  `test` block in `vite.config.ts`. Test files live next to the component they cover,
+  named `*.spec.ts` (e.g. `src/components/HelloWorld.spec.ts`).
 - **TS project layout**: `tsconfig.json` is a references-only root pointing at
   `tsconfig.app.json` (app code, DOM lib, `src/**/*.{ts,tsx,vue}`) and
   `tsconfig.node.json` (Node-context files like `vite.config.ts`). This is the
@@ -21,6 +24,8 @@ npm install
 npm run dev       # Vite dev server, http://localhost:5173
 npm run build     # vue-tsc -b (type-check) && vite build
 npm run preview
+npm run test      # Vitest, single run
+npm run test:watch  # Vitest, watch mode
 ```
 
 There's no separate `type-check`/`lint` script — `npm run build` is currently the
@@ -29,6 +34,9 @@ considering a change done if you're not already running a full build.
 
 ## 3. Code Style & Conventions
 
+- **TDD (see root `CLAUDE.md`)**: write/extend a `*.spec.ts` test next to the
+  component under test → `npm run test` (expect failure) → implement → `npm run test`
+  (expect pass) → commit.
 - **Language rules**: Use `<script setup lang="ts">` for every component — match the
   existing style in `App.vue` / `HelloWorld.vue`. Type new code properly (props,
   emits, function signatures); avoid `any` — reach for `unknown` + narrowing instead

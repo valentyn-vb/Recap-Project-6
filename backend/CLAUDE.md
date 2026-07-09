@@ -25,6 +25,11 @@ Run `./gradlew test` before considering a backend change done.
 
 ## 3. Code Style & Conventions
 
+- **TDD (see root `CLAUDE.md`)**: tests live under `src/test/java/com/example/demo`,
+  mirroring the package structure under `src/main/java/com/example/demo`. Cycle:
+  write/extend a JUnit 5 test → `./gradlew test` (expect failure) → implement →
+  `./gradlew test` (expect pass) → commit. JUnit 5 + `useJUnitPlatform()` is already
+  configured in `build.gradle` — no tooling setup needed to start.
 - **Language rules**: Java 21. Prefer Java records for DTOs once endpoints exist.
 - **Architectural guardrails**: Constructor injection only — no field-level
   `@Autowired` — once beans are introduced.

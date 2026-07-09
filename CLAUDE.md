@@ -21,7 +21,20 @@
 Stack-specific commands and rules live in the nested files — read them before editing
 inside either folder.
 
-## 2. Build & Development Commands
+## 2. Workflow: Test-Driven Development
+
+This project follows strict TDD for every change, in both apps:
+
+1. Write a failing test first — no implementation code before a test exists.
+2. Run the relevant app's test command and confirm it fails for the expected reason.
+3. Implement the minimal code needed to make it pass.
+4. Re-run tests and confirm they're green.
+5. Only commit once tests are green — never commit red.
+
+See `backend/CLAUDE.md` and `frontend/CLAUDE.md` for the exact per-stack test
+commands and file conventions.
+
+## 3. Build & Development Commands
 
 ```bash
 npm install                    # root: installs concurrently only
@@ -35,7 +48,7 @@ npm run dev:frontend   # Vite dev server on :5173
 There is no root-level test or lint command — each app tests/lints independently
 (`backend/CLAUDE.md`, `frontend/CLAUDE.md`).
 
-## 3. Code Style & Conventions
+## 4. Code Style & Conventions
 
 The root has no application source of its own (just `package.json` and repo-wide
 config), so there's no root-level style guide. Guardrails that apply here:
@@ -46,7 +59,7 @@ config), so there's no root-level style guide. Guardrails that apply here:
 - Don't assume a database, authentication, or a frontend↔backend API contract exist —
   none currently do. Any of that is new work, not a fix.
 
-## 4. Repository & Git Preferences
+## 5. Repository & Git Preferences
 
 - **Commit messages**: [Conventional Commits](https://www.conventionalcommits.org/) —
   `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`. Scope by app when it adds
