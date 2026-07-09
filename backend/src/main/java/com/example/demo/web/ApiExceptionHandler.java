@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.profile.ProfileNotFoundException;
 import com.example.demo.user.EmailAlreadyInUseException;
 import com.example.demo.user.InvalidCredentialsException;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,12 @@ public class ApiExceptionHandler {
     @ExceptionHandler(InvalidCredentialsException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Map<String, String> handleInvalidCredentials(InvalidCredentialsException exception) {
+        return Map.of("message", exception.getMessage());
+    }
+
+    @ExceptionHandler(ProfileNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> handleProfileNotFound(ProfileNotFoundException exception) {
         return Map.of("message", exception.getMessage());
     }
 
