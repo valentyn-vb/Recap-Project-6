@@ -1,4 +1,4 @@
 package com.example.demo.auth.dto;
 
-public record RegisterResponse(Long id, String email) {
+public record RegisterResponse(Long id, String email, String token) {
 }

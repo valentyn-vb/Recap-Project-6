@@ -1,6 +1,7 @@
 package com.example.demo.web;
 
 import com.example.demo.user.EmailAlreadyInUseException;
+import com.example.demo.user.InvalidCredentialsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,6 +16,12 @@ public class ApiExceptionHandler {
     @ExceptionHandler(EmailAlreadyInUseException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public Map<String, String> handleEmailAlreadyInUse(EmailAlreadyInUseException exception) {
+        return Map.of("message", exception.getMessage());
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String, String> handleInvalidCredentials(InvalidCredentialsException exception) {
         return Map.of("message", exception.getMessage());
     }
 

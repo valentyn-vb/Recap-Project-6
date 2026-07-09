@@ -20,4 +20,10 @@ public class UserService {
         }
         return userRepository.save(new User(email, passwordEncoder.encode(rawPassword)));
     }
+
+    public User authenticate(String email, String rawPassword) {
+        return userRepository.findByEmail(email)
+                .filter(user -> passwordEncoder.matches(rawPassword, user.getPasswordHash()))
+                .orElseThrow(InvalidCredentialsException::new);
+    }
 }
