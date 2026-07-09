@@ -1,0 +1,15 @@
+# Java / Gradle
+.gradle/
+build/
+*.class
+HELP.md
+
+# Node
+node_modules/
+dist/
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
