@@ -26,6 +26,7 @@ function logOut(): void {
     </template>
     <template #end>
       <div v-if="isAuthenticated" class="user-area">
+        <RouterLink to="/goals" data-testid="goals-link" class="nav-link">Goals</RouterLink>
         <RouterLink to="/profile" data-testid="profile-link" class="user-email">
           <i class="pi pi-user" aria-hidden="true" />
           {{ email }}
@@ -72,5 +73,11 @@ function logOut(): void {
   gap: 6px;
   text-decoration: none;
   color: inherit;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
 }
 </style>
