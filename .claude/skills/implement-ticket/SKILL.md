@@ -11,8 +11,6 @@ description: >-
 
 Execute a developer-approved plan for one issue on a feature branch, TDD-first, committing per logical step. Input: an issue number and a confirmed plan (run [`plan-ticket`](../plan-ticket/SKILL.md) first — do not start without an approved plan). Output: a feature branch with green, committed work, ready for [`open-pr`](../open-pr/SKILL.md).
 
-**Model:** Sonnet is the default working model for implementation. If the session was switched to Opus for planning, switch back (`/model sonnet`) before implementing. Any `Agent` subagent handling an isolated chunk should pass `model: "sonnet"`.
-
 ## Step 1 — Feature branch
 
 Do this before any implementation code.

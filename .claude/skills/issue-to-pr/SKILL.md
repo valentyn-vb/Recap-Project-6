@@ -43,4 +43,3 @@ Repo: `valentyn-vb/Recap-Project-6`. Stack docs: root `CLAUDE.md`, `backend/CLAU
 - The plan confirmation inside `plan-ticket` is a hard stop **every iteration** — the loop never makes it autonomous.
 - One issue = one branch = one PR. Never batch several issues into one branch.
 - If a step skill fails or aborts (dirty tree, blocked dependency, red gate), surface its report and ask the developer how to proceed rather than silently skipping to the next ticket.
-- Model choice per step is defined in the step skills (Opus for planning, Sonnet for implementation).

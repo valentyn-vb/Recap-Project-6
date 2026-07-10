@@ -1,20 +1,20 @@
 ---
 name: plan-ticket
 description: >-
-  Plan the implementation of a specific GitHub issue in plan mode (preferably on
-  Opus): read the issue and repo docs, produce a TDD plan with commit
-  boundaries, and hard-stop for developer confirmation. Use when the user says
-  "plan issue #N" or as the planning step of the issue-to-pr loop.
+  Plan the implementation of a specific GitHub issue in plan mode: read the
+  issue and repo docs, produce a TDD plan with commit boundaries, and hard-stop
+  for developer confirmation. Use when the user says "plan issue #N" or as the
+  planning step of the issue-to-pr loop.
 ---
 
 # plan-ticket
 
 Produce a confirmed implementation plan for one issue. Input: an issue number (and ideally its loaded body — run [`next-ticket`](../next-ticket/SKILL.md) first if no issue is selected yet). Output: a developer-approved plan. No implementation code is written here.
 
-## Model & mode
+## Mode
 
-- **Model:** Opus gives the strongest planning judgment. If the session isn't on Opus, ask the developer to switch (`/model opus`) before planning. Codebase exploration that feeds the plan can be delegated to an `Agent` call with `subagent_type: "Explore"` (or `"general-purpose"`) and `model: "opus"` — the `Agent` tool only accepts `sonnet` / `opus` / `haiku` / `fable` as `model` values.
-- **Mode:** call `EnterPlanMode`. Do not write implementation code while in plan mode.
+- Call `EnterPlanMode`. Do not write implementation code while in plan mode.
+- Codebase exploration that feeds the plan can be delegated to an `Agent` call with `subagent_type: "Explore"` (or `"general-purpose"`).
 
 ## Steps
 
