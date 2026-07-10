@@ -51,6 +51,13 @@ describe('TopBar', () => {
     expect(wrapper.text()).toContain('Log out')
     expect(wrapper.find('[data-testid="sign-in"]').exists()).toBe(false)
     expect(wrapper.find('[data-testid="profile-link"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="goals-link"]').exists()).toBe(true)
+  })
+
+  it('does not show the goals link when logged out', async () => {
+    const { wrapper } = await mountTopBar()
+
+    expect(wrapper.find('[data-testid="goals-link"]').exists()).toBe(false)
   })
 
   it('logs out and navigates home when log out is clicked', async () => {
