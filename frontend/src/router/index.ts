@@ -1,5 +1,6 @@
 import { createRouter, type Router, type RouterHistory } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
+import GoalDetailView from '../views/GoalDetailView.vue'
 import GoalsView from '../views/GoalsView.vue'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
@@ -14,6 +15,12 @@ export function createAppRouter(history: RouterHistory): Router {
       { path: '/login', name: 'login', component: LoginView, meta: { guestOnly: true } },
       { path: '/signup', name: 'signup', component: SignUpView, meta: { guestOnly: true } },
       { path: '/goals', name: 'goals', component: GoalsView, meta: { requiresAuth: true } },
+      {
+        path: '/goals/:id',
+        name: 'goal-detail',
+        component: GoalDetailView,
+        meta: { requiresAuth: true },
+      },
       { path: '/profile', name: 'profile', component: ProfileView, meta: { requiresAuth: true } },
     ],
   })
