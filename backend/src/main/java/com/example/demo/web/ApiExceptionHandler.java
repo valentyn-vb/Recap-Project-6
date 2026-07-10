@@ -2,6 +2,7 @@ package com.example.demo.web;
 
 import com.example.demo.goal.GoalNotFoundException;
 import com.example.demo.profile.ProfileNotFoundException;
+import com.example.demo.session.SessionNotFoundException;
 import com.example.demo.user.EmailAlreadyInUseException;
 import com.example.demo.user.InvalidCredentialsException;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,12 @@ public class ApiExceptionHandler {
     @ExceptionHandler(GoalNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> handleGoalNotFound(GoalNotFoundException exception) {
+        return Map.of("message", exception.getMessage());
+    }
+
+    @ExceptionHandler(SessionNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> handleSessionNotFound(SessionNotFoundException exception) {
         return Map.of("message", exception.getMessage());
     }
 
